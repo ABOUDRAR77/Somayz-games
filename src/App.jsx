@@ -1,0 +1,22 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import Navigation from './components/Navigation';
+import Home from './components/Home';
+import GameDetail from './components/GameDetail';
+import Footer from './components/Footer';
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <ScrollToTop />
+            <div className="min-h-screen bg-white text-black">
+                <Navigation />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/:slug" element={<GameDetail />} />
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
+    );
+}
