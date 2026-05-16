@@ -5,7 +5,7 @@ import FloatingIcon from './FloatingIcon';
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-">
             {gameIcons.map((icon, index) => (
                 <FloatingIcon key={index} icon={icon} index={index} />
             ))}

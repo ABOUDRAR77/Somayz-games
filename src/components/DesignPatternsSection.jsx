@@ -19,7 +19,7 @@ export default function DesignPatternsSection() {
     const currentData = getData();
 
     return (
-        <section id="games" className="py-20 px-4">
+        <section id="games" className="py px-4">
             <motion.div 
                 className="text-center mb-12"
                 initial={{ opacity: 0, y: 30 }}

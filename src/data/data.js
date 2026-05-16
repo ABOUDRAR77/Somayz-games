@@ -4,7 +4,7 @@ export const gameIcons = [
     { name: 'Minecraft', color: '#5d8c38', image: 'https://static.wikia.nocookie.net/logopedia/images/a/ab/Minecraft_2009_icon.svg/revision/latest?cb=20240128230646', top: '60%', left: '78%', size: 75 },
     { name: 'FC Mobile', color: '#0f2d8b', image: 'https://play-lh.googleusercontent.com/yQHb1bk88ENXLZ2_ZO-st7cuG78pva5yRAge2CjhBPoBoEng1ouxyx30vK4s4Z7553Kohd9pPVm1GC2Phs8slA=w240-h480-rw', top: '75%', left: '5%', size: 68 },
     { name: 'DLS', color: '#111111', image: 'https://img.utdstc.com/icon/738/d1c/738d1c45c4f040a3f5eb97f3eefa57b377db51655c3468006fd2f852237fba53:600', top: '80%', left: '90%', size: 60 },
-    { name: 'Farming Sim', color: '#f4c430', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvlmCni26B4i8-F-5GxsR-4dnWB1xV7c0Ive6FD3DeLfWv7BJ-UctkI_0JLlsIbOhnP2nbMQ&s=10', top: '20%', left: '34%', size: 55 },
+    { name: 'Farming Sim', color: '#f4c430', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvlmCni26B4i8-F-5GxsR-4dnWB1xV7c0Ive6FD3DeLfWv7BJ-UctkI_0JLlsIbOhnP2nbMQ&s=10', top: '20%', left: '56%', size: 55 },
     { name: 'Assetto Corsa', color: '#e10600', image: 'https://image.api.playstation.com/cdn/EP4040/CUSA01797_00/NMcAucyANMnYMNkz6V5vk9f5YXty2mCz.png', top: '45%', left: '-5%', size: 58 },
     { name: 'BeamNG', color: '#e0e0e0', image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7oWSzMhvGgdiNux7SmBMI9ywWT0aEmaloePnygw-4_SMYIw4MMHRv_uqR2Daapp-EkB_Ag&s=10", top: '45%', left: '92%', size: 62 },
 ];

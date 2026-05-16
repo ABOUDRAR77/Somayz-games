@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
 import { allGames } from "../data/data";
 import ContentLocker from "./ContentLocker";
+import FakeSocialProof from "./FakeSocialProof";
+import FakeLiveCounter from "./FakeLiveCounter";
 
 export default function GameDetail() {
     const { slug } = useParams();
@@ -13,8 +15,7 @@ export default function GameDetail() {
 
     const handleDownload = () => {
         if (unlocked) {
-            // Replace with your actual direct download or final redirect
-            window.location.href = game.downloadLink;
+            window.location.href = `${game.downloadLink}`;
         } else {
             setLockerOpen(true);
         }
@@ -23,9 +24,8 @@ export default function GameDetail() {
     const handleUnlock = () => {
         setUnlocked(true);
         setLockerOpen(false);
-        // Auto-redirect to download after unlock
         setTimeout(() => {
-            window.location.href = game.downloadLink;
+            window.location.href = `${game.downloadLink}`;
         }, 500);
     };
 
@@ -44,6 +44,9 @@ export default function GameDetail() {
                 onUnlock={handleUnlock}
                 game={game}
             />
+
+            {/* Fake Social Proof Popup */}
+            <FakeSocialProof />
 
             {/* Back */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
@@ -65,6 +68,7 @@ export default function GameDetail() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
+                {/* Image */}
                 <div className={`${game.color} rounded-[2.5rem] p-8 flex items-center justify-center aspect-square relative`}>
                     <div className="absolute top-6 left-6 bg-black text-white text-sm font-bold px-4 py-2 rounded-full">
                         Rank #{game.rank}
@@ -76,6 +80,7 @@ export default function GameDetail() {
                     )}
                 </div>
 
+                {/* Info */}
                 <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold mb-4">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
@@ -83,9 +88,15 @@ export default function GameDetail() {
                     </div>
 
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">{game.title}</h1>
-                    <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-                        Download the fully modded APK with unlimited resources, unlocked skins, and online multiplayer support. Complete a quick offer to unlock your download.
+                    
+                    <p className="text-gray-500 text-lg mb-6 leading-relaxed">
+                        Download the fully modded APK with unlimited resources, unlocked skins, and online multiplayer support.
                     </p>
+
+                    {/* FAKE LIVE COUNTER */}
+                    <div className="mb-6">
+                        <FakeLiveCounter />
+                    </div>
 
                     <div className="flex flex-wrap gap-4">
                         <button
@@ -108,7 +119,7 @@ export default function GameDetail() {
                 </div>
             </motion.div>
 
-            {/* Features */}
+            {/* Features Grid */}
             <motion.div
                 className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
                 initial={{ opacity: 0, y: 30 }}
@@ -128,7 +139,7 @@ export default function GameDetail() {
                 ))}
             </motion.div>
 
-            {/* How to */}
+            {/* How to Download */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
