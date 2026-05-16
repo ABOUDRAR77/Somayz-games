@@ -10,12 +10,12 @@ export const gameIcons = [
 ];
 
 export const allGames = [
-    { title: 'GTAV Mobile', img: 'https://i.pinimg.com/736x/8f/01/03/8f010359c57da7850e723fa17a53b55e.jpg', color: 'bg-gray-100', rank: 1, slug: 'gtav-mobile' },
-    { title: 'Euro Truck Simulator 2 Mobile', img: 'https://res.cloudinary.com/dk28vshae/image/upload/q_auto/f_auto/v1778946033/pngegg.png', color: 'bg-red-50', rank: 2, slug: 'euro-truck-simulator-2-mobile' },
-    { title: 'Minecraft (Ultra Graphics + Online)', img: 'https://static.wikia.nocookie.net/logopedia/images/a/ab/Minecraft_2009_icon.svg/revision/latest?cb=20240128230646', color: 'bg-green-50', rank: 3, slug: 'minecraft-ultra-graphics-online' },
-    { title: 'BeamNG Drive Mobile', img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7oWSzMhvGgdiNux7SmBMI9ywWT0aEmaloePnygw-4_SMYIw4MMHRv_uqR2Daapp-EkB_Ag&s=10", color: 'bg-gray-50', rank: 4, slug: 'beamng-drive-mobile' },
-    { title: 'FC Mobile 26 + DLS 26 (Mod Menu)', img: 'https://play-lh.googleusercontent.com/yQHb1bk88ENXLZ2_ZO-st7cuG78pva5yRAge2CjhBPoBoEng1ouxyx30vK4s4Z7553Kohd9pPVm1GC2Phs8slA=w240-h480-rw', color: 'bg-blue-50', rank: 5, slug: 'fc-mobile-26-dls-26-mod-menu' },
-    { title: 'Farming Simulator 25 + Assetto Corsa', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvlmCni26B4i8-F-5GxsR-4dnWB1xV7c0Ive6FD3DeLfWv7BJ-UctkI_0JLlsIbOhnP2nbMQ&s=10', color: 'bg-yellow-50', rank: 6, slug: 'farming-simulator-25-assetto-corsa' },
+    { title: 'GTAV Mobile',downloadlink:"", img: 'https://i.pinimg.com/736x/8f/01/03/8f010359c57da7850e723fa17a53b55e.jpg', color: 'bg-gray-100', rank: 1, slug: 'gtav-mobile' },
+    { title: 'Euro Truck Simulator 2 Mobile', downloadlink:"", img: 'https://res.cloudinary.com/dk28vshae/image/upload/q_auto/f_auto/v1778946033/pngegg.png', color: 'bg-red-50', rank: 2, slug: 'euro-truck-simulator-2-mobile' },
+    { title: 'Minecraft (Ultra Graphics + Online)', downloadlink:"", img: 'https://static.wikia.nocookie.net/logopedia/images/a/ab/Minecraft_2009_icon.svg/revision/latest?cb=20240128230646', color: 'bg-green-50', rank: 3, slug: 'minecraft-ultra-graphics-online' },
+    { title: 'BeamNG Drive Mobile', downloadlink:"", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn7oWSzMhvGgdiNux7SmBMI9ywWT0aEmaloePnygw-4_SMYIw4MMHRv_uqR2Daapp-EkB_Ag&s=10", color: 'bg-gray-50', rank: 4, slug: 'beamng-drive-mobile' },
+    { title: 'FC Mobile 26 + DLS 26 (Mod Menu)', downloadlink:"", img: 'https://play-lh.googleusercontent.com/yQHb1bk88ENXLZ2_ZO-st7cuG78pva5yRAge2CjhBPoBoEng1ouxyx30vK4s4Z7553Kohd9pPVm1GC2Phs8slA=w240-h480-rw', color: 'bg-blue-50', rank: 5, slug: 'fc-mobile-26-dls-26-mod-menu' },
+    { title: 'Farming Simulator 25 + Assetto Corsa', downloadlink:"", img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvlmCni26B4i8-F-5GxsR-4dnWB1xV7c0Ive6FD3DeLfWv7BJ-UctkI_0JLlsIbOhnP2nbMQ&s=10', color: 'bg-yellow-50', rank: 6, slug: 'farming-simulator-25-assetto-corsa' },
 ];
 
 export const simulationGames = [allGames[1], allGames[5]];
