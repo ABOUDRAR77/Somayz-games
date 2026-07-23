@@ -16,7 +16,7 @@ import useAnalyticsEvent from "../hooks/useAnalyticsEvent";
 import { trackEvent } from "../lib/analytics";
 import { createPortal } from "react-dom";
 
-const WORKER_URL = "https://gamewave.mhamed-ouzed.workers.dev/";
+const WORKER_URL = "https://delicate-waterfall-ba89.abdelhakaboudrar98.workers.dev/";
 
 function cn(...classes) {
     return classes.filter(Boolean).join(" ");
