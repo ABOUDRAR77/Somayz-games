@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* ─── Dark mode via class strategy (Tailwind v4) ─── */
+@variant dark (&:where(.dark, .dark *));
+
+/* ─── Smooth theme transitions ─── */
+html {
+    color-scheme: light;
+}
+html.dark {
+    color-scheme: dark;
+    --locker-header-gradient: linear-gradient(rgba(24,24,27,0.92), rgba(24,24,27,0.98));
+}
+
+body,
+body * {
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+}
+
+/* Exclude elements where transitions look wrong */
+img, svg, video {
+    transition: none;
+}
+
+/* ─── Hero gradient shimmer (dark mode) ─── */
+@keyframes shimmer-text {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.dark .hero-shimmer {
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #a78bfa 30%,
+        #22d3ee 60%,
+        #ffffff 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-text 5s ease infinite;
+}
+
+/* ─── Glow pulse for cards in dark mode ─── */
+@keyframes card-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+    50%       { box-shadow: 0 0 20px 4px rgba(139, 92, 246, 0.18); }
+}
+
+.dark .game-card-glow:hover {
+    animation: card-glow 2s ease-in-out infinite;
+}
+
+/* ─── Radial bg glow behind hero in dark mode ─── */
+.dark .hero-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 80% 60% at 50% 50%,
+        rgba(139, 92, 246, 0.07) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
