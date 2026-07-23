@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="py-12 px-4 border-t border-gray-100">
+        <footer className="py-12 px-4 border-t border-gray-100 dark:border-white/10">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center gap-2 font-bold text-xl">
                     <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
@@ -8,7 +8,7 @@ export default function Footer() {
                     </svg>
                     <span>GameWave</span>
                 </div>
-                <p className="text-gray-500 text-sm">© 2026 GameWave. All rights reserved.</p>
+                <p className="text-gray-500 dark:text-zinc-500 text-sm">© 2026 GameWave. All rights reserved.</p>
             </div>
         </footer>
     );

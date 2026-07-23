@@ -9,7 +9,7 @@ export default function App() {
     return (
         <BrowserRouter>
             <ScrollToTop />
-            <div className="min-h-screen bg-white text-black">
+            <div className="min-h-screen bg-white dark:bg-[#0d0d0f] text-black dark:text-white">
                 <Navigation />
                 <Routes>
                     <Route path="/" element={<Home />} />

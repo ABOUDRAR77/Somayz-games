@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.css'; // if you have tailwind imports here
+import { ThemeProvider } from './context/ThemeContext';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+    <ThemeProvider>
+        <App />
+    </ThemeProvider>
+);
