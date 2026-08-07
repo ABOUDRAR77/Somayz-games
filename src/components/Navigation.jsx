@@ -16,7 +16,7 @@ export default function Navigation() {
 
     return (
         <header>
-            <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100 dark:border-white/10 w-[calc(100%-2rem)] md:w-auto">
+            <nav className="fixed top-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100 dark:border-white/10 md:w-auto">
                 <div className="flex items-center justify-between md:justify-center gap-2 md:gap-8">
                     {/* Logo */}
                     <Link

@@ -14,7 +14,7 @@ export default function App() {
             <SocialBar />
 
             <ScrollToTop />
-            <div className="min-h-screen bg-white dark:bg-[#0d0d0f] text-black dark:text-white">
+            <div className="min-h-screen bg-white dark:bg-[#0d0d0f] text-black dark:text-white overflow-x-hidden">
                 <Navigation />
                 <Routes>
                     <Route path="/" element={<Home />} />
