@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { allGames, simulationGames, racingGames, sportsGames } from '../data/data';
 import PhoneMockup from './PhoneMockup';
+import { BannerAd } from './ads';
 
 export default function DesignPatternsSection() {
     const [activeTab, setActiveTab] = useState('All Games');
@@ -48,7 +49,19 @@ export default function DesignPatternsSection() {
             <div className="max-w-6xl mx-auto px-4 md:px-12">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
                     {currentData.map((item, index) => (
-                        <PhoneMockup key={`${activeTab}-${item.slug}`} item={item} index={index} />
+                        <>
+                            <PhoneMockup key={`${activeTab}-${item.slug}`} item={item} index={index} />
+
+                            {/* ── 300×250 ad after the 4th game card ── */}
+                            {index === 3 && (
+                                <div
+                                    key="ad-300x250"
+                                    className="flex items-center justify-center rounded-3xl bg-gray-50 dark:bg-zinc-900 dark:border dark:border-white/10 overflow-hidden"
+                                >
+                                    <BannerAd size="300x250" />
+                                </div>
+                            )}
+                        </>
                     ))}
                 </div>
             </div>

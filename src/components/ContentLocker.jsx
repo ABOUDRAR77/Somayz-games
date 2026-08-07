@@ -10,6 +10,7 @@ import {
     Zap,
     CircleDot,
     RefreshCw,
+    ShieldCheck,
 } from "lucide-react";
 import useOfferVerification from "../hooks/useOfferVerification";
 import useAnalyticsEvent from "../hooks/useAnalyticsEvent";
@@ -24,13 +25,13 @@ function cn(...classes) {
 
 function OfferSkeleton() {
     return (
-        <div className="w-full flex items-center gap-3 p-2.5 rounded-lg border border-gray-100 bg-gray-50 animate-pulse">
-            <div className="w-8 h-8 rounded-md bg-gray-200 shrink-0" />
-            <div className="flex-1 space-y-1.5">
-                <div className="h-2.5 bg-gray-200 rounded-full w-2/3" />
-                <div className="h-2 bg-gray-100 rounded-full w-1/3" />
+        <div className="w-full flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/5 animate-pulse">
+            <div className="w-10 h-10 rounded-xl bg-white/10 shrink-0" />
+            <div className="flex-1 space-y-2">
+                <div className="h-3 bg-white/10 rounded-full w-2/3" />
+                <div className="h-2 bg-white/5 rounded-full w-1/3" />
             </div>
-            <div className="w-3.5 h-3.5 rounded bg-gray-200 shrink-0" />
+            <div className="w-4 h-4 rounded bg-white/10 shrink-0" />
         </div>
     );
 }
@@ -39,17 +40,17 @@ function OfferItem({ offer, index, onOfferClick, completed }) {
     return (
         <motion.button
             key={offer.id}
-            whileHover={{ scale: 1.01, x: 3 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.02, x: 4 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => onOfferClick(offer, index)}
             disabled={completed}
             className={cn(
-                "w-full flex items-center gap-3 p-2.5 rounded-lg border border-gray-100",
-                "bg-gray-50 hover:bg-gray-100 hover:border-gray-200 transition-all text-left group",
-                completed && "opacity-50 cursor-not-allowed"
+                "w-full flex items-center gap-3 p-3 rounded-xl border transition-all text-left group",
+                "border-white/10 bg-white/5 hover:bg-violet-500/20 hover:border-violet-400/40",
+                completed && "opacity-40 cursor-not-allowed"
             )}
         >
-            <div className="w-8 h-8 rounded-md bg-white border border-gray-200 overflow-hidden shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 overflow-hidden shrink-0">
                 <img
                     src={offer.network_icon || ""}
                     className="w-full h-full object-cover"
@@ -58,14 +59,14 @@ function OfferItem({ offer, index, onOfferClick, completed }) {
                 />
             </div>
             <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-xs truncate group-hover:text-gray-900 transition-colors">
+                <h3 className="font-bold text-sm text-white truncate group-hover:text-violet-200 transition-colors">
                     {offer.name || ""}
                 </h3>
-                <p className="text-[9px] text-gray-400 truncate uppercase font-medium">
+                <p className="text-[10px] text-zinc-400 truncate uppercase font-medium tracking-wide">
                     {offer.anchor || "Click to verify"}
                 </p>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-600 transition-colors shrink-0" />
+            <ExternalLink className="w-4 h-4 text-zinc-500 group-hover:text-violet-400 transition-colors shrink-0" />
         </motion.button>
     );
 }
@@ -166,98 +167,132 @@ const ContentLocker = ({ onUnlock, isOpen, onClose, game }) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={onClose}
-                    className="fixed inset-0 z-[34343] flex items-center justify-center p-3 bg-black/70 backdrop-blur-md"
+                    className="fixed inset-0 z-[34343] flex items-center justify-center p-4"
+                    style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(16px)" }}
                 >
                     <motion.div
-                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                        initial={{ scale: 0.88, opacity: 0, y: 24 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        transition={{ type: "spring", damping: 22, stiffness: 300 }}
+                        exit={{ scale: 0.88, opacity: 0, y: 24 }}
+                        transition={{ type: "spring", damping: 24, stiffness: 320 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="w-full max-w-sm bg-white border border-gray-100 shadow-2xl rounded-2xl overflow-hidden relative max-h-[85vh] overflow-y-auto"
+                        className="w-full max-w-sm rounded-2xl overflow-hidden relative max-h-[88vh] overflow-y-auto"
+                        style={{
+                            background: "linear-gradient(145deg, #18181b 0%, #0f0f12 100%)",
+                            border: "1px solid rgba(255,255,255,0.08)",
+                            boxShadow: "0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(139,92,246,0.15)",
+                        }}
                     >
+                        {/* Ambient glow */}
+                        <div
+                            className="absolute inset-0 pointer-events-none"
+                            style={{
+                                background: "radial-gradient(ellipse 70% 40% at 50% 0%, rgba(139,92,246,0.12) 0%, transparent 70%)",
+                            }}
+                        />
+
                         {/* Close */}
                         <button
                             onClick={onClose}
                             aria-label="Close"
-                            className="absolute top-3 right-3 p-1.5 rounded-full bg-black/10 hover:bg-black/20 text-gray-500 hover:text-black transition-colors z-10"
+                            className="absolute top-3 right-3 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-all z-10"
                         >
                             <X className="w-4 h-4" />
                         </button>
 
                         {/* Header */}
                         <div
-                            className="p-4 border-b border-gray-100 text-center relative overflow-hidden"
+                            className="p-5 border-b border-white/8 text-center relative overflow-hidden"
                             style={{
                                 backgroundImage: bgImage
-                                    ? `linear-gradient(rgba(255,255,255,0.92),rgba(255,255,255,0.98)), url(${bgImage})`
+                                    ? `var(--locker-header-gradient, linear-gradient(rgba(24,24,27,0.92),rgba(24,24,27,0.98))), url(${bgImage})`
                                     : "none",
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
                             }}
                         >
                             <div className="relative z-10">
-                                <div className="mx-auto w-12 h-12 bg-gray-50 rounded-xl border-2 border-gray-200 flex items-center justify-center mb-2 shadow-sm">
+                                {/* Game title badge */}
+                                {game?.title && (
+                                    <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/10 rounded-full px-3 py-1 text-[10px] font-semibold text-zinc-300 mb-3 uppercase tracking-wider">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+                                        {game.title}
+                                    </div>
+                                )}
+
+                                <div className="mx-auto w-14 h-14 rounded-2xl flex items-center justify-center mb-3 shadow-lg"
+                                    style={{
+                                        background: completed
+                                            ? "linear-gradient(135deg,#22c55e,#16a34a)"
+                                            : "linear-gradient(135deg,#7c3aed,#4f46e5)",
+                                        boxShadow: completed
+                                            ? "0 8px 24px rgba(34,197,94,0.35)"
+                                            : "0 8px 24px rgba(124,58,237,0.45)",
+                                    }}
+                                >
                                     {completed ? (
-                                        <CheckCircle className="w-6 h-6 text-green-500" />
+                                        <CheckCircle className="w-7 h-7 text-white" />
                                     ) : (
-                                        <Lock className="w-6 h-6 text-gray-900" />
+                                        <Lock className="w-7 h-7 text-white" />
                                     )}
                                 </div>
-                                <h2 className="text-base font-bold mb-0.5 text-gray-900">
-                                    {completed ? "Verified!" : "Verification Required"}
+
+                                <h2 className="text-lg font-bold mb-1 text-white">
+                                    {completed ? "Access Granted!" : "Unlock Your Download"}
                                 </h2>
                                 {!completed && (
-                                    <p className="text-gray-500 text-[11px] max-w-[220px] mx-auto">
-                                        Complete one task to unlock your free download.
+                                    <p className="text-zinc-400 text-xs max-w-[220px] mx-auto leading-relaxed">
+                                        Complete one quick task to get instant free access.
                                     </p>
                                 )}
                             </div>
                         </div>
 
                         {/* Body */}
-                        <div className="p-3 space-y-2">
+                        <div className="p-4 space-y-3">
                             {completed ? (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 12 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="flex flex-col items-center gap-2 py-4 text-center"
+                                    className="flex flex-col items-center gap-3 py-6 text-center"
                                 >
-                                    <CheckCircle className="w-10 h-10 text-green-500" />
-                                    <div>
-                                        <p className="font-bold text-base text-gray-900">
-                                            Download Unlocked!
-                                        </p>
-                                        <p className="text-xs text-gray-500 mt-0.5">
-                                            Your download will start in a moment…
-                                        </p>
+                                    <div className="w-16 h-16 rounded-full flex items-center justify-center"
+                                        style={{ background: "linear-gradient(135deg,#22c55e,#16a34a)", boxShadow: "0 8px 24px rgba(34,197,94,0.4)" }}>
+                                        <CheckCircle className="w-9 h-9 text-white" />
                                     </div>
-                                    <Loader2 className="w-3.5 h-3.5 animate-spin text-gray-900 mt-1" />
+                                    <div>
+                                        <p className="font-bold text-base text-white">Download Unlocked!</p>
+                                        <p className="text-xs text-zinc-400 mt-1">Starting your download now…</p>
+                                    </div>
+                                    <Loader2 className="w-4 h-4 animate-spin text-violet-400 mt-1" />
                                 </motion.div>
                             ) : (
                                 <>
-                                    <div className="bg-gray-50 border border-gray-100 rounded-lg p-2.5 relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-1.5 opacity-10">
-                                            <Zap className="w-6 h-6 text-gray-900" />
+                                    {/* Steps card */}
+                                    <div className="rounded-xl p-3 relative overflow-hidden"
+                                        style={{ background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.2)" }}>
+                                        <div className="absolute top-0 right-0 p-2 opacity-20">
+                                            <Zap className="w-8 h-8 text-violet-400" />
                                         </div>
-                                        <h3 className="text-[10px] font-bold uppercase tracking-tighter text-gray-900 mb-2 flex items-center gap-1.5">
+                                        <h3 className="text-[10px] font-bold uppercase tracking-widest text-violet-300 mb-2.5 flex items-center gap-1.5">
                                             <span className="relative flex h-1.5 w-1.5">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-900 opacity-75" />
-                                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gray-900" />
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+                                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-400" />
                                             </span>
-                                            Required Actions
+                                            How It Works
                                         </h3>
                                         <ul className="space-y-1.5">
                                             {[
-                                                "Select one task from the list below",
-                                                "Complete the task instructions fully",
-                                                "Verification is automatic — download unlocks instantly",
+                                                "Pick any task from the list below",
+                                                "Complete the full task instructions",
+                                                "Download unlocks instantly — no waiting",
                                             ].map((text, i) => (
                                                 <li
                                                     key={i}
-                                                    className="flex items-start gap-2 text-[11px] text-gray-500 leading-tight"
+                                                    className="flex items-start gap-2 text-[11px] text-zinc-300 leading-tight"
                                                 >
-                                                    <span className="bg-gray-200 text-gray-700 font-bold rounded w-4 h-4 flex items-center justify-center shrink-0 text-[9px]">
+                                                    <span className="w-4 h-4 rounded-md flex items-center justify-center shrink-0 text-[9px] font-bold"
+                                                        style={{ background: "rgba(139,92,246,0.3)", color: "#a78bfa" }}>
                                                         {i + 1}
                                                     </span>
                                                     {text}
@@ -266,17 +301,20 @@ const ContentLocker = ({ onUnlock, isOpen, onClose, game }) => {
                                         </ul>
                                     </div>
 
+                                    {/* Task header */}
                                     <div className="flex items-center justify-between px-0.5">
-                                        <h4 className="text-[10px] font-bold uppercase text-gray-400 tracking-widest flex items-center gap-1.5">
-                                            <CircleDot className="w-2.5 h-2.5 text-green-500" />
-                                            Task Selection
+                                        <h4 className="text-[10px] font-bold uppercase text-zinc-500 tracking-widest flex items-center gap-1.5">
+                                            <CircleDot className="w-2.5 h-2.5 text-green-400" />
+                                            Available Tasks
                                         </h4>
-                                        <span className="text-[9px] bg-gray-100 px-1.5 py-0.5 rounded-full text-gray-500">
-                                            Available Now
+                                        <span className="text-[9px] px-2 py-0.5 rounded-full font-medium"
+                                            style={{ background: "rgba(34,197,94,0.15)", color: "#86efac" }}>
+                                            Live Now
                                         </span>
                                     </div>
 
-                                    <div className="space-y-1.5">
+                                    {/* Offers list */}
+                                    <div className="space-y-2">
                                         {isLoading ? (
                                             <>
                                                 <OfferSkeleton />
@@ -285,16 +323,15 @@ const ContentLocker = ({ onUnlock, isOpen, onClose, game }) => {
                                                 <OfferSkeleton />
                                             </>
                                         ) : isError ? (
-                                            <div className="flex flex-col items-center gap-2 py-4 text-center">
-                                                <AlertCircle className="w-6 h-6 text-red-500" />
-                                                <p className="text-xs text-gray-500">
-                                                    Could not load tasks. Check your connection.
-                                                </p>
+                                            <div className="flex flex-col items-center gap-2.5 py-6 text-center">
+                                                <AlertCircle className="w-7 h-7 text-red-400" />
+                                                <p className="text-xs text-zinc-400">Could not load tasks. Check your connection.</p>
                                                 <button
                                                     onClick={() => window.location.reload()}
-                                                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-gray-200 text-[10px] font-medium hover:bg-gray-50 transition-colors"
+                                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[10px] font-medium transition-colors"
+                                                    style={{ background: "rgba(255,255,255,0.08)", color: "#a1a1aa", border: "1px solid rgba(255,255,255,0.1)" }}
                                                 >
-                                                    <RefreshCw className="w-2.5 h-2.5" /> Retry
+                                                    <RefreshCw className="w-3 h-3" /> Retry
                                                 </button>
                                             </div>
                                         ) : (
@@ -314,11 +351,12 @@ const ContentLocker = ({ onUnlock, isOpen, onClose, game }) => {
                                         <motion.div
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
-                                            className="flex items-center gap-1.5 justify-center bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5"
+                                            className="flex items-center gap-2 justify-center rounded-xl px-3 py-2.5"
+                                            style={{ background: "rgba(139,92,246,0.15)", border: "1px solid rgba(139,92,246,0.25)" }}
                                         >
-                                            <Loader2 className="w-3 h-3 animate-spin text-gray-900" />
-                                            <span className="text-[10px] font-medium text-gray-900">
-                                                Verifying your task completion…
+                                            <Loader2 className="w-3.5 h-3.5 animate-spin text-violet-400" />
+                                            <span className="text-[10px] font-semibold text-violet-300">
+                                                Verifying your completion…
                                             </span>
                                         </motion.div>
                                     )}
@@ -327,22 +365,25 @@ const ContentLocker = ({ onUnlock, isOpen, onClose, game }) => {
                         </div>
 
                         {/* Footer */}
-                        <div className="p-2 bg-gray-50 border-t border-gray-100 flex items-center justify-center gap-2">
+                        <div className="px-4 py-3 flex items-center justify-between"
+                            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(0,0,0,0.3)" }}>
                             <div className="flex items-center gap-1.5">
                                 {verifying ? (
-                                    <Loader2 className="w-2.5 h-2.5 animate-spin text-gray-900" />
+                                    <Loader2 className="w-2.5 h-2.5 animate-spin text-violet-400" />
                                 ) : (
-                                    <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                                    <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${completed ? "bg-green-400" : "bg-yellow-400"}`} />
                                 )}
-                                <span className="text-[9px] font-bold uppercase tracking-tighter text-gray-400">
+                                <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
                                     Status:{" "}
-                                    {verifying ? "Verifying…" : completed ? "Unlocked ✓" : "Awaiting Selection"}
+                                    <span className={completed ? "text-green-400" : verifying ? "text-violet-400" : "text-zinc-400"}>
+                                        {verifying ? "Verifying…" : completed ? "Unlocked ✓" : "Awaiting"}
+                                    </span>
                                 </span>
                             </div>
-                            <div className="h-2.5 w-px bg-gray-200" />
-                            <span className="text-[9px] font-mono text-gray-300">
-                                v2.5.0
-                            </span>
+                            <div className="flex items-center gap-1.5 text-zinc-600">
+                                <ShieldCheck className="w-3 h-3" />
+                                <span className="text-[9px] font-medium">Secure & Safe</span>
+                            </div>
                         </div>
                     </motion.div>
                 </motion.div>

@@ -5,6 +5,7 @@ import { allGames } from "../data/data";
 import ContentLocker from "./ContentLocker";
 import FakeSocialProof from "./FakeSocialProof";
 import FakeLiveCounter from "./FakeLiveCounter";
+import { BannerAd, NativeBanner } from "./ads";
 
 export default function GameDetail() {
     const { slug } = useParams();
@@ -137,6 +138,11 @@ export default function GameDetail() {
                 ))}
             </motion.div>
 
+            {/* ── Leaderboard: shown after users check game specs ── */}
+            <div className="flex justify-center my-8">
+                <BannerAd size="728x90" center />
+            </div>
+
             {/* How to Download */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -170,6 +176,16 @@ export default function GameDetail() {
                     </button>
                 </div>
             </motion.div>
+
+            {/* ── 300×250: high-intent moment right after how-to guide ── */}
+            <div className="flex justify-center my-8">
+                <BannerAd size="300x250" center />
+            </div>
+
+            {/* ── Native Banner: content-style exit ad at page bottom ── */}
+            <div className="my-8">
+                <NativeBanner />
+            </div>
         </div>
     );
 }
