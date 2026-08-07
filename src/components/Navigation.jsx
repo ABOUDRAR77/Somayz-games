@@ -16,18 +16,19 @@ export default function Navigation() {
 
     return (
         <header>
-            <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100 dark:border-white/10 w-[calc(100%-2rem)] max-w-xl md:max-w-none md:w-auto">
-                <div className="flex items-center justify-between md:justify-center gap-4 md:gap-8">
+            <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100 dark:border-white/10 w-[calc(100%-2rem)] md:w-auto">
+                <div className="flex items-center justify-between md:justify-center gap-2 md:gap-8">
                     {/* Logo */}
                     <Link
                         to="/"
-                        className="flex items-center gap-2 font-bold text-lg md:text-xl hover:opacity-70 transition-opacity shrink-0"
+                        className="flex items-center gap-1.5 md:gap-2 font-bold text-base md:text-xl hover:opacity-70 transition-opacity min-w-0"
                         onClick={handleLinkClick}
                     >
-                        <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
+                        <svg viewBox="0 0 24 24" className="w-6 h-6 md:w-7 md:h-7 shrink-0" fill="currentColor">
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                         </svg>
-                        <span>PlayNextGames</span>
+                        <span className="hidden sm:inline">PlayNextGames</span>
+                        <span className="sm:hidden">PlayNext</span>
                     </Link>
 
                     {/* Desktop Links */}
